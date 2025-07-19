@@ -1,0 +1,25 @@
+{
+  "name": "nnsvs-hed-syntax",
+  "displayName": "nnsvs-hed-syntax",
+  "description": "NNSVS-style HED language support",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "nnsvs-hed",
+      "aliases": ["HED", "nnsvs-hed"],
+      "extensions": [".hed"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "nnsvs-hed",
+      "scopeName": "source.hed",
+      "path": "./syntaxes/nnsvs-hed.tmLanguage.json"
+    }]
+  }
+}
