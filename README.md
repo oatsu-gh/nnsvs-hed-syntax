@@ -1,6 +1,6 @@
 # NNSVS HED syntax (VSCode extension)
 
-Support NNSVS HED file syntax highlighting extension
+NNSVS HED language syntax highlighting support for VS Code
 
 ## Release Notes
 

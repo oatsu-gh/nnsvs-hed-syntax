@@ -1,32 +1,151 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "HED",
+	"name": "NNSVS HED",
 	"patterns": [
 		{
-			"include": "#keywords"
+			"include": "#comments"
 		},
 		{
-			"include": "#strings"
+			"include": "#qs-statement"
+		},
+		{
+			"include": "#cqs-statement"
+		},
+		{
+			"include": "#unclosed-brace"
 		}
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.nnsvs-hed",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
+		"comments": {
+			"name": "comment.line.number-sign.hed",
+			"begin": "#",
+			"end": "$",
+			"patterns": [
+				{
+					"name": "keyword.other.hed",
+					"match": "\\b(feature dim|feature_dim|in_rest_idx|in_lf0_idx|NOTE|TODO|FIXME)\\b"
+				},
+				{
+					"name": "constant.numeric.hed",
+					"match": "(?<=[;:\\s])\\d+(?=[;:\\s]|$)"
+				}
+			]
 		},
-		"strings": {
-			"name": "string.quoted.double.nnsvs-hed",
+		"qs-statement": {
+			"name": "meta.statement.qs.hed",
+			"begin": "^\\s*(QS)\\s+",
+			"end": "$",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.qs.hed"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#identifier"
+				},
+				{
+					"include": "#pattern-block"
+				}
+			]
+		},
+		"cqs-statement": {
+			"name": "meta.statement.cqs.hed",
+			"begin": "^\\s*(CQS)\\s+",
+			"end": "$",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.cqs.hed"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#identifier"
+				},
+				{
+					"include": "#pattern-block"
+				}
+			]
+		},
+		"identifier": {
+			"name": "string.quoted.double.hed",
 			"begin": "\"",
 			"end": "\"",
 			"patterns": [
 				{
-					"name": "constant.character.escape.nnsvs-hed",
-					"match": "\\\\."
+					"name": "entity.name.function.hed",
+					"match": "\\w+(LL|L|C|R|RR)-(VUV|NOFIX)_(-|\\w)+"
 				}
 			]
+		},
+		"pattern-block": {
+			"name": "meta.block.pattern.hed",
+			"begin": "\\{",
+			"end": "\\}",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.block.begin.hed"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.block.end.hed"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#pattern-content"
+				}
+			]
+		},
+		"pattern-content": {
+			"patterns": [
+				{
+					"name": "constant.character.contextual.hed",
+					"match": "/[A-Z]:"
+				},
+				{
+					"name": "comment.line.hed",
+					"match": "\\*"
+				},
+				{
+					"name": "punctuation.separator.hed",
+					"match": ","
+				},
+				{
+					"name": "constant.character.special.hed",
+					"match": "[\\=\\+\\-\\~\\!\\@\\#\\$\\%\\^\\&\\;\\|\\_\\[\\]\\/]"
+				},
+				{
+					"name": "constant.numeric.hed",
+					"match": "(?<=[;:\\s])\\d+(?=[;:\\s]|$)"
+				},
+				{
+					"name": "constant.character.escape.hed",
+					"match": "\\\\[NOTE]"
+				},
+				{
+					"name": "entity.name.class.pause.hed",
+					"match": "\\b(sil|pau)\\b"
+				},
+				{
+					"name": "string.regexp.hed",
+					"match": "\\([^)]*\\)"
+				},
+				{
+					"name": "constant.other.pitch.hed",
+					"match": "[pm]\\d+"
+				}
+			]
+		},
+		"unclosed-brace": {
+			"name": "invalid.illegal.unclosed-brace.hed",
+			"match": "\\{^}*$"
 		}
+	},
+	"invalid-line": {
+		"name": "invalid.illegal.unrecognized-line.hed",
+		"match": "^\\s*(?!QS|CQS|#).+"
 	},
 	"scopeName": "source.hed"
 }

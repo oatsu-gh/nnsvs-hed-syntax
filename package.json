@@ -1,8 +1,10 @@
 {
   "name": "nnsvs-hed-syntax",
-  "displayName": "nnsvs-hed-syntax",
-  "description": "NNSVS-style HED language support",
+  "displayName": "NNSVS HED Syntax",
+  "description": "HED language syntax highlighting support",
+  "repository": "https://github.com/oatsu-gh/nnsvs-hed-syntax-vscode",
   "version": "0.0.1",
+  "publisher": "oatsu",
   "engines": {
     "vscode": "^1.102.0"
   },
@@ -10,16 +12,16 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "nnsvs-hed",
-      "aliases": ["HED", "nnsvs-hed"],
-      "extensions": [".hed"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "nnsvs-hed",
-      "scopeName": "source.hed",
-      "path": "./syntaxes/nnsvs-hed.tmLanguage.json"
-    }]
+    "languages": [ {
+        "id": "nnsvs-hed",
+        "aliases": [ "nnsvs-HED", "nnsvs-hed" ],
+        "extensions": [ ".hed" ],
+        "configuration": "./language-configuration.json"
+      } ],
+    "grammars": [ {
+        "language": "nnsvs-hed",
+        "scopeName": "source.hed",
+        "path": "./syntaxes/nnsvs-hed.tmLanguage.json"
+      } ]
   }
 }
