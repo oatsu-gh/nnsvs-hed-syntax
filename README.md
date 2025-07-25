@@ -10,4 +10,4 @@ NNSVS HED language syntax highlighting support for VS Code
 
 ### 0.0.2
 
-- highlight `in_ph_start_idx` and `in_ph_end_idx`
+- Newly highlight `in_ph_start_idx` and `in_ph_end_idx`
