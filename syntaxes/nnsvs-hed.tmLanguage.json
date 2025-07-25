@@ -23,7 +23,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.hed",
-					"match": "\\b(feature dim|feature_dim|in_rest_idx|in_lf0_idx|NOTE|TODO|FIXME)\\b"
+					"match": "\\b(feature dim|feature_dim|in_rest_idx|in_lf0_idx|in_ph_start_idx|in_ph_end_idx|NOTE|TODO|FIXME)\\b"
 				},
 				{
 					"name": "constant.numeric.hed",

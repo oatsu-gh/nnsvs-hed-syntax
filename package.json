@@ -3,7 +3,7 @@
   "displayName": "NNSVS HED Syntax",
   "description": "HED language syntax highlighting support",
   "repository": "https://github.com/oatsu-gh/nnsvs-hed-syntax-vscode",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "oatsu",
   "engines": {
     "vscode": "^1.102.0"
